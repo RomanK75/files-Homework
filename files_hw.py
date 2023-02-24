@@ -1,6 +1,5 @@
 ### Home work ###
 import pprint
-
 # Creating a cook book
 cook_book = {}
 with open('recipes.txt', encoding='utf-8') as f:
@@ -18,10 +17,10 @@ with open('recipes.txt', encoding='utf-8') as f:
 f.close()
 # pprint.pprint(cook_book)
 
-
 # Task 2 : Нужно написать функцию, которая на 
 # вход принимает список блюд из cook_book
 #  и количество персон для кого мы будем готовить
+
 def get_shop_list_by_dishes(dishes, person_count):
     needed_ing = {}
     for dish in dishes:
@@ -37,5 +36,26 @@ def get_shop_list_by_dishes(dishes, person_count):
     for ing in needed_ing:
         needed_ing[ing]['quantity'] *= person_count
     pprint.pprint(needed_ing)
-    
+
+# Вызов функции
+
 get_shop_list_by_dishes(['Омлет','Омлет'],2)
+
+# task 3 Необходимо объединить их в один по следующим правилам:
+#Содержимое исходных файлов в результирующем файле должно быть отсортировано 
+# по количеству строк в них (то есть первым нужно записать файл с наименьшим количеством строк,
+#  а последним - с наибольшим)
+#Содержимое файла должно предваряться служебной информацией на 2-х строках:
+#  имя файла и количество строк в нем
+
+def merg_files(files): # inout format - list()
+    amount_of_files = len(files)
+    merged = []
+    for file in files:
+        with open(file, encoding='utf-8') as f:
+            text = f.readlines()
+            merged.append(text)
+    return merged
+files_list = ['1.txt','2.txt']
+
+print(merg_files(files_list))
