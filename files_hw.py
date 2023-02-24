@@ -39,7 +39,7 @@ def get_shop_list_by_dishes(dishes, person_count):
 
 # Вызов функции
 
-get_shop_list_by_dishes(['Омлет','Омлет'],2)
+# get_shop_list_by_dishes(['Омлет','Омлет'],2)
 
 # task 3 Необходимо объединить их в один по следующим правилам:
 #Содержимое исходных файлов в результирующем файле должно быть отсортировано 
@@ -48,14 +48,21 @@ get_shop_list_by_dishes(['Омлет','Омлет'],2)
 #Содержимое файла должно предваряться служебной информацией на 2-х строках:
 #  имя файла и количество строк в нем
 
-def merg_files(files): # inout format - list()
-    amount_of_files = len(files)
+def merg_files(files): # input format - list()
     merged = []
     for file in files:
+        name = [file]
         with open(file, encoding='utf-8') as f:
             text = f.readlines()
-            merged.append(text)
-    return merged
-files_list = ['1.txt','2.txt']
+            len_text = [str(len(text))]
+            all_info = name + len_text + text
+            merged.append(all_info)
+    merged = sorted(merged, key = lambda merged : len(merged))
+    for file in merged:
+        print(f'{file[0]}\n{file[1]}')
+        for i in range(2,len(file)):
+            print(file[i].replace('\n',''))
+        print()
 
-print(merg_files(files_list))
+files_list = ['1.txt','2.txt']
+merg_files(files_list)
