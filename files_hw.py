@@ -14,7 +14,7 @@ with open('recipes.txt', encoding='utf-8') as f:
             ing.append(ingridients)
         cook_book[dish] = ing
         f.readline()
-f.close()
+
 # pprint.pprint(cook_book)
 
 # Task 2 : Нужно написать функцию, которая на 
@@ -39,7 +39,7 @@ def get_shop_list_by_dishes(dishes, person_count):
 
 # Вызов функции
 
-# get_shop_list_by_dishes(['Омлет','Омлет'],2)
+get_shop_list_by_dishes(['Омлет','Омлет'],2)
 
 # task 3 Необходимо объединить их в один по следующим правилам:
 #Содержимое исходных файлов в результирующем файле должно быть отсортировано 
